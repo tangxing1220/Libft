@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 17:20:52 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/21 17:50:42 by xtang            ###   ########.fr       */
+/*   Created: 2019/10/23 17:05:37 by xtang             #+#    #+#             */
+/*   Updated: 2019/10/23 17:07:39 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
+	size_t	len;
+	size_t	len2;
+	int		result;
 
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-		dst[i] = '\0';
-	}
-	return (dst);
+	len = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	len = (len <= len2) ? len + 1 : len2 + 1;
+	len = (len <= n) ? len : n;
+	result = ft_memcmp(s1, s2, len);
+	return (result);
 }

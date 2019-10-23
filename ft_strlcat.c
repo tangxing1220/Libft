@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 17:20:52 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/21 17:50:42 by xtang            ###   ########.fr       */
+/*   Created: 2019/10/23 17:14:56 by xtang             #+#    #+#             */
+/*   Updated: 2019/10/23 17:17:06 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
+	char	*cur;
+	char	*reader;
+	size_t	len;
 
-	i = 0;
-	while (src[i] != '\0')
+	cur = (char *)ft_memchr(dst, '\0', dstsize);
+	if (cur == NULL)
+		return (dstsize + ft_strlen(src));
+	reader = (char *)src;
+	len = (size_t)(cur - dst) + ft_strlen(reader);
+	while ((size_t)(cur = dst) < dstsize - 1 && *reader != '\0')
 	{
-		dst[i] = src[i];
-		i++;
-		dst[i] = '\0';
+		*cur = *reader;
+		cur++;
+		reader++;
 	}
-	return (dst);
+	*cur = '\0';
+	return (len);
 }

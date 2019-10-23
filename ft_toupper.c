@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 17:20:52 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/21 17:50:42 by xtang            ###   ########.fr       */
+/*   Created: 2019/10/23 16:44:08 by xtang             #+#    #+#             */
+/*   Updated: 2019/10/23 16:45:08 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+int	ft_toupper(int c)
 {
-	size_t i;
-
-	i = 0;
-	while (src[i] != '\0')
+	if (c >= 'a' && c <= 'z')
 	{
-		dst[i] = src[i];
-		i++;
-		dst[i] = '\0';
+		return (c - 'a' + 'A');
 	}
-	return (dst);
+	return (c);
 }

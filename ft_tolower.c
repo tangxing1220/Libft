@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 17:20:52 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/21 17:50:42 by xtang            ###   ########.fr       */
+/*   Created: 2019/10/23 16:40:52 by xtang             #+#    #+#             */
+/*   Updated: 2019/10/23 16:43:25 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+int	ft_tolower(int c)
 {
-	size_t i;
-
-	i = 0;
-	while (src[i] != '\0')
+	if (c >= 'A' && c <= 'Z')
 	{
-		dst[i] = src[i];
-		i++;
-		dst[i] = '\0';
+		return (c - 'A' + 'a');
 	}
-	return (dst);
+	return (c);
 }
