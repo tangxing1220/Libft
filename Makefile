@@ -60,7 +60,14 @@ SRC = ft_strlen.c \
 	  ft_strequ.c \
 	  ft_striter.c \
 	  ft_striteri.c \
-	  ft_strjoin.c 
+	  ft_strjoin.c \
+	  ft_strmap.c \
+	  ft_strmapi.c \
+	  ft_strnequ.c \
+	  ft_strnew.c \
+	  ft_strsplit.c \
+	  ft_strsub.c \
+	  ft_strtrim.c
 
 
 OBJ = $(SRC:.c=.o)
