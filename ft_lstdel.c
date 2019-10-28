@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 18:32:17 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/28 11:07:24 by xtang            ###   ########.fr       */
+/*   Created: 2019/10/28 12:36:21 by xtang             #+#    #+#             */
+/*   Updated: 2019/10/28 12:39:09 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strequ(char const *s1, char const *s2)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	char	*str1;
-	char	*str2;
+	t_list *next;
 
-	str1 = (char *)s1;
-	str2 = (char *)s2;
-	while (*str1 != '\0' && *str2 != '\0')
+	while (*alst != NULL)
 	{
-		if (*str1 == *str2)
-		{
-			str1++;
-			str2++;
-		}
-		else
-			return (0);
+		next = (*alst)->next;
+		ft_lstdelone(alst, del);
+		*alst = next;
 	}
-	if (*str1 == '\0' && *str2 == '\0')
-		return (1);
-	else
-		return (0);
 }
