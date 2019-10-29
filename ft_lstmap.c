@@ -6,7 +6,7 @@
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 13:12:06 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/28 13:17:03 by xtang            ###   ########.fr       */
+/*   Updated: 2019/10/29 18:30:41 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,14 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *new;
-	t_list *link;
+	t_list *newlist;
 
-	new = NULL;
-	link = NULL;
-	while (lst != NULL)
+	if (lst != NULL && f != NULL)
 	{
-		if (new == NULL)
-		{
-			new = f(lst);
-			link = new;
-		}
-		else
-		{
-			link->next = f(lst);
-		}
+		newlist = f(lst);
+		if (newlist != NULL && lst->next != NULL)
+			newlist->next = ft_lstmap(lst->next, f);
+		return (newlist);
 	}
-	return (new);
+	return (NULL);
 }

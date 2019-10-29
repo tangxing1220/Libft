@@ -6,7 +6,7 @@
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:14:56 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/23 17:17:06 by xtang            ###   ########.fr       */
+/*   Updated: 2019/10/29 14:47:15 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,19 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	char	*cur;
-	char	*reader;
-	size_t	len;
+	size_t	j;
+	size_t	k;
 
-	cur = (char *)ft_memchr(dst, '\0', dstsize);
-	if (cur == NULL)
-		return (dstsize + ft_strlen(src));
-	reader = (char *)src;
-	len = (size_t)(cur - dst) + ft_strlen(reader);
-	while ((size_t)(cur = dst) < dstsize - 1 && *reader != '\0')
+	j = 0;
+	k = 0;
+	while (dst[j] && j < dstsize)
+		j++;
+	while ((src[k]) && ((j + k + 1) < dstsize))
 	{
-		*cur = *reader;
-		cur++;
-		reader++;
+		dst[j + k] = src[k];
+		k++;
 	}
-	*cur = '\0';
-	return (len);
+	if (j != dstsize)
+		dst[j + k] = '\0';
+	return (j + ft_strlen(src));
 }

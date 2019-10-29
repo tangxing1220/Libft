@@ -6,7 +6,7 @@
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 11:23:08 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/28 12:08:43 by xtang            ###   ########.fr       */
+/*   Updated: 2019/10/29 18:09:41 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		new->content = malloc(content_size);
 		if (new->content == NULL)
 		{
-			//	free(new);
 			return (NULL);
 		}
 		ft_memcpy(new->content, content, content_size);

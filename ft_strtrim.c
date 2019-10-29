@@ -6,7 +6,7 @@
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:24:03 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/25 16:36:47 by xtang            ###   ########.fr       */
+/*   Updated: 2019/10/29 18:07:09 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 char	*ft_strtrim(char const *s)
 {
-	char	*str;
-	int		len;
-	int		i;
-	int		j;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	k;
+	char			*str;
 
 	i = 0;
-	j = 0;
-	len = ft_strlen(s);
-	str = (char *)malloc(sizeof(char) * len + 1);
+	k = 0;
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+		i++;
+	if (s[i] == '\0')
+		return (ft_strcpy(ft_memalloc(sizeof(char) * 2), ""));
+	j = ft_strlen(s) - 1;
+	while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
+		j--;
+	str = (char *)malloc(sizeof(char) * (j - i + 2));
 	if (str == NULL)
 		return (NULL);
-	while (s[i] != '\0')
+	while (k < j - i + 1)
 	{
-		if (s[i] != ' ' && s[i] != '\n' && s[i] != '\t')
-		{
-			str[j] = s[i];
-			i++;
-			j++;
-		}
-		else
-			i++;
+		str[k] = s[i + k];
+		k++;
 	}
-	str[j + 1] = '\0';
+	str[k] = '\0';
 	return (str);
 }
