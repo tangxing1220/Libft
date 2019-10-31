@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_ft_lstiter.c                                  :+:      :+:    :+:   */
+/*   test_ft_lstmap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 18:09:29 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/31 18:17:52 by xtang            ###   ########.fr       */
+/*   Created: 2019/10/31 16:25:59 by xtang             #+#    #+#             */
+/*   Updated: 2019/10/31 16:58:01 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_modify_list_with_d(t_list *elem)
+void	ft_print_result(t_list *elem)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (((char *)elem->content)[len])
-	{
-		((char *)elem->content)[len] = 'd';
 		len++;
-	}
+	write(1, elem->content, len);
+	write(1, "\n", 1);
 }
 
-void	ft_print_result(t_list *elem)
+t_list	*ft_map(t_list *elem)
 {
-	int len;
+	int		i;
+	t_list	*new_elem;
 
-	while (elem)
+	new_elem = ft_lstnew(elem->content, elem->content_size);
+	if (!new_elem)
+		return (0);
+	i = 0;
+	while (((char *)new_elem->content)[i])
 	{
-		len = 0;
-		while (((char *)elem->content)[len])
-			len++;
-		write(1, elem->content, len);
-		write(1, "\n", 1);
-		elem = elem->next;
+		((char *)new_elem->content)[i] = 'y';
+		i++;
 	}
+	return (new_elem);
 }
 
 int		main(void)
@@ -45,6 +46,7 @@ int		main(void)
 	t_list	*elem2;
 	t_list	*elem3;
 	t_list	*elem4;
+	t_list	*list;
 	char	str[] = "lorem";
 	char	str2[] = "ipsum";
 	char	str3[] = "dolor";
@@ -57,7 +59,14 @@ int		main(void)
 	elem->next = elem2;
 	elem2->next = elem3;
 	elem3->next = elem4;
-	ft_lstiter(elem, &ft_modify_list_with_d);
-	ft_print_result(elem);
+	if (!(list = ft_lstmap(elem, &ft_map)))
+		return (0);
+	if (list == elem)
+		write(1, "A new list is not returned\n", 27);
+	while (list)
+	{
+		ft_print_result(list);
+		list = list->next;
+	}
 	return (0);
 }

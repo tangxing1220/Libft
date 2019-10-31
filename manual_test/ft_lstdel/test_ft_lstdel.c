@@ -6,13 +6,13 @@
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:17:29 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/30 19:34:20 by xtang            ###   ########.fr       */
+/*   Updated: 2019/10/31 18:48:15 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	nb_free_done;
+static	int	g_nb_free_done;
 
 void	ft_print_result(t_list *elem)
 {
@@ -28,7 +28,7 @@ void	ft_del(void *content, size_t size)
 {
 	(void)size;
 	free(content);
-	nb_free_done++;
+	g_nb_free_done++;
 }
 
 int		main(void)
@@ -49,7 +49,7 @@ int		main(void)
 	elem->next = elem2;
 	elem2->next = elem3;
 	elem3->next = elem4;
-	nb_free_done = 0;
+	g_nb_free_done = 0;
 	ft_lstdel(&elem3, &ft_del);
 	if (elem)
 		ft_print_result(elem);
@@ -71,8 +71,8 @@ int		main(void)
 		ft_print_result(elem2);
 		ft_print_result(elem4);
 		write(1, "nb_free_done = ", 15);
-		nb_free_done += '0';
-		write(1, &nb_free_done, 1);
+		g_nb_free_done += '0';
+		write(1, &g_nb_free_done, 1);
 	}
 	else
 		write(1, "NULL", 4);

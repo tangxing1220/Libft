@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_lstadd.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/31 18:23:28 by xtang             #+#    #+#             */
+/*   Updated: 2019/10/31 18:28:39 by xtang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_print_result(t_list *elem)
 {
-	int		len;
+	int len;
 
 	len = 0;
 	while (((char *)elem->content)[len])
@@ -11,16 +23,15 @@ void	ft_print_result(t_list *elem)
 	write(1, "\n", 1);
 }
 
-int main(void)
+int		main(void)
 {
 	t_list		*begin;
 	t_list		*elem;
 	t_list		*elem2;
 	t_list		*elem3;
 	t_list		*elem4;
-
 	char		str[] = "lorem";
-	char 		str2[] = "ipsum";
+	char		str2[] = "ipsum";
 	char		str3[] = "dlolr";
 	char		str4[] = "sit";
 
@@ -33,7 +44,6 @@ int main(void)
 	ft_lstadd(&begin, elem3);
 	ft_lstadd(&begin, elem2);
 	ft_lstadd(&begin, elem);
-
 	while (begin)
 	{
 		ft_print_result(begin);
@@ -41,4 +51,3 @@ int main(void)
 	}
 	return (0);
 }
-

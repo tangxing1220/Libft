@@ -6,7 +6,7 @@
 /*   By: xtang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:26:56 by xtang             #+#    #+#             */
-/*   Updated: 2019/10/30 17:45:14 by xtang            ###   ########.fr       */
+/*   Updated: 2019/10/31 18:54:48 by xtang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ int		main(void)
 	elem->next = elem2;
 	elem2->next = elem3;
 	elem3->next = elem4;
-	
 	ft_lstdelone(&elem3, &ft_del);
-	if ( elem3 == NULL)
-		if( elem2->next != NULL && elem4 != NULL)
+	if (elem3 == NULL)
+		if (elem2->next != NULL && elem4 != NULL)
 			elem2->next = elem4;
 	if (elem)
 		ft_print_result(elem);
